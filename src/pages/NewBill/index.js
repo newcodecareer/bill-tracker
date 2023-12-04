@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const NewBill = () => {
-  return (
-    <div>
-      NewBill
-    </div>
-  )
-}
+  return <div>NewBill</div>;
+};
 
-export default NewBill
+export default NewBill;
