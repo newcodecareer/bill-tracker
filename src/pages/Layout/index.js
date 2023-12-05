@@ -46,7 +46,7 @@ const Layout = () => {
       <TabBar
         className="footer"
         activeKey={location.pathname}
-        onChange={(k) => navigate(k)}>
+        onChange={(key) => navigate(key)}>
         {tabs.map((item) => (
           <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
         ))}
