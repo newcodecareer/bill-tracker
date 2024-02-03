@@ -5,6 +5,7 @@ import classNames from "classnames";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 import _ from "lodash";
+import DailyBill from "./components/DailyBill";
 
 const Month = () => {
   const billList = useSelector((state) => state.bill.billList);
@@ -33,6 +34,7 @@ const Month = () => {
     };
   }, [currentMonthList]);
 
+  // 初始化时，显示当前月份账单
   useEffect(() => {
     const nowDate = dayjs().format("YYYY-MM");
     if (monthGroup[nowDate]) {
@@ -48,6 +50,19 @@ const Month = () => {
     setMonthList(monthGroup[formatDate] || []);
   };
   // console.log(currentMonthList);
+
+  // 按日分组
+  const dayGroup = useMemo(() => {
+    const groupDate = _.groupBy(currentMonthList, (item) =>
+      dayjs(item.date).format("YYYY-MM-DD")
+    );
+    const keys = Object.keys(groupDate);
+    return {
+      groupDate,
+      keys,
+    };
+  }, [currentMonthList]);
+
   return (
     <div className="monthlyBill">
       <NavBar className="nav" backArrow={false}>
@@ -87,6 +102,16 @@ const Month = () => {
             onConfirm={onConfirm}
           />
         </div>
+        {/* DAILY BILL */}
+        {dayGroup.keys.map((key) => {
+          return (
+            <DailyBill
+              key={key}
+              date={key}
+              billList={dayGroup.groupDate[key]}
+            />
+          );
+        })}
       </div>
     </div>
   );
