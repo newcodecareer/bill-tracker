@@ -2,23 +2,21 @@ import classNames from "classnames";
 import "./index.scss";
 import { useMemo } from "react";
 
-
-const DailyBill = ({date, billList}) => {
-
-    // 与按月统计的逻辑类似
-    const dayResult = useMemo(() => {
-        const pay = billList
-          .filter((item) => item.type === "pay")
-          .reduce((acc, curr) => acc + curr.money, 0);
-        const income = billList
-          .filter((item) => item.type === "income")
-          .reduce((acc, curr) => acc + curr.money, 0);
-        return {
-          pay,
-          income,
-          total: pay + income,
-        };
-      }, [billList]);
+const DailyBill = ({ date, billList }) => {
+  // 与按月统计的逻辑类似
+  const dayResult = useMemo(() => {
+    const pay = billList
+      .filter((item) => item.type === "pay")
+      .reduce((acc, curr) => acc + curr.money, 0);
+    const income = billList
+      .filter((item) => item.type === "income")
+      .reduce((acc, curr) => acc + curr.money, 0);
+    return {
+      pay,
+      income,
+      total: pay + income,
+    };
+  }, [billList]);
   return (
     <div className={classNames("dailyBill")}>
       <div className="header">
@@ -40,6 +38,20 @@ const DailyBill = ({date, billList}) => {
             <span className="type">结余</span>
           </div>
         </div>
+      </div>
+      <div className="billList">
+        {billList.map((item) => {
+          return (
+            <div className="bill" key={item.id}>
+              <div className="detail">
+                <div className="billType">{item.useFor}</div>
+              </div>
+              <div className={classNames("money", item.type)}>
+                {item.money.toFixed(2)}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
