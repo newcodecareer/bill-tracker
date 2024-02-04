@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import "./index.scss";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 const DailyBill = ({ date, billList }) => {
   // 与按月统计的逻辑类似
@@ -17,12 +17,17 @@ const DailyBill = ({ date, billList }) => {
       total: pay + income,
     };
   }, [billList]);
+  //  控制展开收起
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className={classNames("dailyBill")}>
       <div className="header">
         <div className="dateIcon">
           <span className="date">{date}</span>
-          <span className={classNames("arrow")}></span>
+          <span
+            className={classNames("arrow", visible && 'expand')}
+            onClick={() => setVisible(!visible)}></span>
         </div>
         <div className="oneLineOverview">
           <div className="pay">
@@ -39,7 +44,8 @@ const DailyBill = ({ date, billList }) => {
           </div>
         </div>
       </div>
-      <div className="billList">
+      {visible && (
+        <div className="billList">
         {billList.map((item) => {
           return (
             <div className="bill" key={item.id}>
@@ -53,6 +59,7 @@ const DailyBill = ({ date, billList }) => {
           );
         })}
       </div>
+      )}
     </div>
   );
 };
