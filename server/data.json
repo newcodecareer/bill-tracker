@@ -90,6 +90,33 @@
       "date": "2024-02-04T12:13:41.216Z",
       "useFor": "food",
       "id": 20
+    },
+    {
+      "type": "pay",
+      "money": -10,
+      "date": "2024-02-02T14:00:00.000Z",
+      "useFor": "dessert",
+      "id": 21
+    },
+    {
+      "type": "pay",
+      "money": -20,
+      "useFor": "drinks",
+      "id": 22
+    },
+    {
+      "type": "pay",
+      "money": -330,
+      "date": "2024-02-05T11:16:30.908Z",
+      "useFor": "drinks",
+      "id": 23
+    },
+    {
+      "type": "pay",
+      "money": -220,
+      "date": "2024-01-04T14:00:00.000Z",
+      "useFor": "game",
+      "id": 24
     }
   ]
 }
