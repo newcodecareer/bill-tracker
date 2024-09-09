@@ -22,6 +22,7 @@ const { setBillList,addBillList } = billStore.actions;
 const getBills = () => {
   return async (dispatch) => {
     const res = await axios.get("http://localhost:8888/ka");
+    // console.log(res)
     dispatch(setBillList(res.data));
   };
 };

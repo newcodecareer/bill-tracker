@@ -117,6 +117,20 @@
       "date": "2024-01-04T14:00:00.000Z",
       "useFor": "game",
       "id": 24
+    },
+    {
+      "type": "pay",
+      "money": -66,
+      "date": "2024-09-09T09:58:43.242Z",
+      "useFor": "food",
+      "id": 25
+    },
+    {
+      "type": "income",
+      "money": 1000,
+      "date": "2024-09-09T10:00:36.610Z",
+      "useFor": "salary",
+      "id": 26
     }
   ]
 }

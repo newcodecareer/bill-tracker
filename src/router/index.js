@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true,
+        index: true, //true 不可省，写在jsx里可能是可以省略的，比如W3SCHOOL里的例子
         element: <MonthBill />,
       },
       {
